@@ -1,0 +1,7 @@
+= ThinBalance
+
+Run multiple thin instances of your app load-balanced using pen in development
+
+== Usage
+
+

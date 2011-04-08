@@ -15,7 +15,8 @@ In your Rails app´s root dir, invoke:
     
 This will fire up 3 thin instances of your app, running on ports 3001-3003 as well
 as the pen round-robin load balancer on port 3000, so when you go to localhost:3000,
-you will in fact have all 3 thin instances in use.
+you will in fact have all 3 thin instances in use and thus have concurrent requests processed
+immediately.
 
 == Options
 
@@ -29,7 +30,7 @@ Choose the port for the load balanced app. Will invoke thins on the directly
 successing ports, so if you have 5 thin servers and a port 5000, thin will launch
 on ports 5001-5005
 
-  $ thin_balance -e production / --environment production
+  $ thin_balance -e production / --environment production (default: development)
   
 Set the environment thin should be launched with
 

@@ -2,6 +2,49 @@
 
 Run multiple thin instances of your app load-balanced using pen in development
 
-== Usage
+== Install
 
-TODO...
+  gem install thin_balance
+  sudo apt-get install pen
+
+== Basic usage
+
+In your Rails app´s root dir, invoke:
+    
+  thin_balance
+    
+This will fire up 3 thin instances of your app, running on ports 3001-3003 as well
+as the pen round-robin load balancer on port 3000, so when you go to localhost:3000,
+you will in fact have all 3 thin instances in use.
+
+== Options
+
+  $ thin_balance -s 5 / --server 5 (default: 3)
+  
+The number of thin instances to be launched.
+
+  $ thin_balance -p 5000 / --port 5000 (default: 3000)
+
+Choose the port for the load balanced app. Will invoke thins on the directly
+successing ports, so if you have 5 thin servers and a port 5000, thin will launch
+on ports 5001-5005
+
+  $ thin_balance -e production / --environment production
+  
+Set the environment thin should be launched with
+
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don´t break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2011 Christoph Olszowka. See LICENSE for details.
+

@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'thin_balance'
+require File.join(File.dirname(__FILE__), '../lib/thin_balance')
 ThinBalance.run!

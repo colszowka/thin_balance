@@ -3,6 +3,8 @@ module ThinBalance
   autoload :Server, 'thin_balance/server'
   
   def self.run!
-    ThinBalance::Server.new(ThinBalance::CLI.new.config).run!
+    cli = ThinBalance::CLI.new
+    cli.parse_options
+    ThinBalance::Server.new(cli.config).run!
   end
 end

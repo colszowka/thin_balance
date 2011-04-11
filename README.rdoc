@@ -1,19 +1,35 @@
 = ThinBalance
 
-Run multiple thin instances of your app load-balanced using pen in development
+Run multiple thin instances of your app load-balanced using pen in development so
+concurrent requests are possible.
 
 == Install
 
   gem install thin_balance
-  sudo apt-get install pen
+  
+You will also need pen[http://siag.nu/pen/] for load balancing your running thin
+instances.
+
+On Linux systems, pen should be available through your package manager. On Debian/Ubuntu,
+you should be able to install it with <tt>sudo apt-get install pen</tt>.
+
+You can also build pen from source if there is no package available on your system:
+
+    cd /tmp
+    wget http://siag.nu/pub/pen/pen-0.18.0.tar.gz
+    tar xfz pen-0.18.0.tar.gz
+    cd pen-0.18.0
+    ./configure
+    make
+    sudo make install
 
 == Basic usage
 
-In your Rails app´s root dir, invoke:
+In your Rails app´s root dir, invoke the <tt>thin_balance</tt> shell command:
     
-  thin_balance
+  $ thin_balance
     
-This will fire up 3 thin instances of your app, running on ports 3001-3003 as well
+This will fire up 3 thin instances for your app, running on ports 3001-3003 as well
 as the pen round-robin load balancer on port 3000, so when you go to localhost:3000,
 you will in fact have all 3 thin instances in use and thus have concurrent requests processed
 immediately.
@@ -28,7 +44,7 @@ The number of thin instances to be launched.
 
 Choose the port for the load balanced app. Will invoke thins on the directly
 successing ports, so if you have 5 thin servers and a port 5000, thin will launch
-on ports 5001-5005
+on ports 5001-5005, while pen listens and balances on 5000.
 
   $ thin_balance -e production / --environment production (default: development)
   
@@ -47,5 +63,5 @@ Set the environment thin should be launched with
 
 == Copyright
 
-Copyright (c) 2011 Christoph Olszowka. See LICENSE for details.
+Copyright (c) 2011 Christoph Olszowka, Capita Unternehmensberatung GmbH. See LICENSE for details.
 

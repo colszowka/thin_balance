@@ -15,13 +15,13 @@ you should be able to install it with <tt>sudo apt-get install pen</tt>.
 
 You can also build pen from source if there is no package available on your system:
 
-    cd /tmp
-    wget http://siag.nu/pub/pen/pen-0.18.0.tar.gz
-    tar xfz pen-0.18.0.tar.gz
-    cd pen-0.18.0
-    ./configure
-    make
-    sudo make install
+  cd /tmp
+  wget http://siag.nu/pub/pen/pen-0.18.0.tar.gz
+  tar xfz pen-0.18.0.tar.gz
+  cd pen-0.18.0
+  ./configure
+  make
+  sudo make install
 
 == Basic usage
 

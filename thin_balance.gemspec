@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Christoph Olszowka"]
   s.email       = ["christoph at olszowka de"]
   s.homepage    = "https://github.com/colszowka/thin_balance"
-  s.summary     = %q{Run multiple thin instances of your app load-balanced using pen in development}
-  s.description = %q{Run multiple thin instances of your app load-balanced using pen in development}
+  s.summary     = %q{Run multiple thin instances of your rack app load-balanced using pen in development so concurrent requests are possible. }
+  s.description = %q{Run multiple thin instances of your rack app load-balanced using pen in development so concurrent requests are possible. }
 
 
   s.add_dependency 'thin', '>= 1.2'

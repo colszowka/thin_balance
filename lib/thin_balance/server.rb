@@ -34,7 +34,7 @@ module ThinBalance
     end
     
     def start_thin
-      invoke "thin start --servers #{config[:servers].to_i} -p #{thin_ports.first} -e #{config[:rack_env]}"
+      invoke "thin start --servers #{config[:servers].to_i} -p #{thin_ports.first} -e #{config[:rack_env]} #{thin_rackup}"
     end
     
     def start_pen
@@ -43,6 +43,14 @@ module ThinBalance
     
     def stop_thin
       invoke "thin stop --servers #{config[:servers].to_i} -p #{thin_ports.first}"
+    end
+    
+    def thin_rackup
+      if File.exist?('config.ru')
+        "--rackup config.ru"
+      else
+        ""
+      end
     end
     
     def ensure_pen_and_thin_available!

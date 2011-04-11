@@ -1,6 +1,6 @@
 = ThinBalance
 
-Run multiple thin instances of your app load-balanced using pen in development so
+Run multiple thin instances of your rack app load-balanced using pen in development so
 concurrent requests are possible.
 
 == Install
@@ -25,7 +25,7 @@ You can also build pen from source if there is no package available on your syst
 
 == Basic usage
 
-In your Rails app´s root dir, invoke the <tt>thin_balance</tt> shell command:
+In your app´s root dir, invoke the <tt>thin_balance</tt> shell command:
     
   $ thin_balance
     

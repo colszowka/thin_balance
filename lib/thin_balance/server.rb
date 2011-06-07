@@ -32,9 +32,17 @@ module ThinBalance
       puts "#{"RUNNING".green}: #{cmd.bold}"
       system cmd
     end
+
+    def thin_command
+      if File.exist?('Gemfile')
+        "bundle exec thin"
+      else
+        "thin"
+      end
+    end
     
     def start_thin
-      invoke "thin start --servers #{config[:servers].to_i} -p #{thin_ports.first} -e #{config[:rack_env]} #{thin_rackup}"
+      invoke "#{thin_command} start --servers #{config[:servers].to_i} -p #{thin_ports.first} -e #{config[:rack_env]} #{thin_rackup}"
     end
     
     def start_pen
@@ -42,7 +50,7 @@ module ThinBalance
     end
     
     def stop_thin
-      invoke "thin stop --servers #{config[:servers].to_i} -p #{thin_ports.first}"
+      invoke "#{thin_command} stop --servers #{config[:servers].to_i} -p #{thin_ports.first}"
     end
     
     def thin_rackup

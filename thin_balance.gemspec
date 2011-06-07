@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'thin', '>= 1.2'
   s.add_dependency 'mixlib-cli', "~> 1.2"
   s.add_dependency 'term-ansicolor', '>= 1.0.0'
+  s.add_development_dependency 'rake', '~> 0.9'
   
   s.bindir = 'bin'
   s.default_executable = 'thin_balance'
